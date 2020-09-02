@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+
+    <div class="row">
+        <div class="col-sm-6">
+            <h2>Show Task</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-8">
+            <form class="form-horizontal">
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Task Id:</label>
+                    <div class="col-sm-10">
+                        <p class="form-control-static" th:text="${task.id}">Task Id</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Description:</label>
+                    <div class="col-sm-10">
+                        <p class="form-control-static" th:text="${task.description}">Description</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Date:</label>
+                    <div class="col-sm-10">
+                        <p class="form-control-static" th:text="${#dates.format(task.getDate(), 'dd.MM.yyyy')}">Date</p>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <p align="left"><a href="/" class="btn btn-dark">Tasks</a></p>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <div th:if="${not #lists.isEmpty(tasks)}">
+        <h2>Task List</h2>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Description</th>
+                    <th>Date<a th:href="${'/sortAsc'}">Sort</a></th>
+                    <th>List</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="task : ${tasks}">
+                    <td th:text="${task.id}"></td>
+                    <td th:text="${task.description}"></td>
+                    <td th:text="${#dates.format(task.getDate(), 'dd.MM.yyyy')}"></td>
+                    <td><a th:href="${'/task/' + task.id}">View</a> </td>
+                    <td><a th:href="${'/task/edit/' + task.id}">Edit</a> </td>
+                    <td><a th:href="${'/task/delete/' + task.id}">Delete</a> </td>
+                </tr>
+        </table>
+    </div>
+    <div class="row">
+        <div class="col-sm-3">
+            <a href="/task/new">New Task</a>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
